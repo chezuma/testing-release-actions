@@ -25,8 +25,14 @@ jobs:
 
       # Set up Release Drafter
       - name: Release Drafter
+        id: release
         uses: release-drafter/release-drafter@v6
         with:
           commitish: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       
+      - name: Process new_tag 
+        id: process_new_tag
+        run: |
+            echo "new_tag=${{steps.release.outputs.tag_name}}" >> $GITHUB_ENV
