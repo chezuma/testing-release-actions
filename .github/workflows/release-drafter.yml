@@ -26,5 +26,7 @@ jobs:
       # Set up Release Drafter
       - name: Release Drafter
         uses: release-drafter/release-drafter@v6
+        with:
+          commitish: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
