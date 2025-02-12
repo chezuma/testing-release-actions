@@ -20,7 +20,7 @@ jobs:
               github.rest.git.createRef({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                ref: 'refs/tags${{steps.semver.outputs.next}}',
+                ref: 'refs/tags/${{steps.semver.outputs.next}}',
                 sha: context.sha
               })  
           token: ${{ secrets.GITHUB_TOKEN }}        
