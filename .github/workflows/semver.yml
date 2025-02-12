@@ -12,7 +12,14 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-      - name: Process new_tag 
-        id: process_new_tag
-        run: |
-              echo "new_tag=${{steps.semver.outputs.next}}" >> $GITHUB_ENV      - name: Create Release
+
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+              github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: 'refs/tags${{steps.semver.outputs.next}}',
+                sha: context.sha
+              })          
