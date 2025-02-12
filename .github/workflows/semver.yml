@@ -1,0 +1,18 @@
+on:
+    push:
+      branches:
+        - main
+jobs:
+  update_tag:
+    runs-on: ubuntu-latest
+    steps:      
+      - name: Semver
+        id: semver
+        uses: ietf-tools/semver-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+      - name: Process new_tag 
+        id: process_new_tag
+        run: |
+              echo "new_tag=${{steps.semver.outputs.next}}" >> $GITHUB_ENV      - name: Create Release
