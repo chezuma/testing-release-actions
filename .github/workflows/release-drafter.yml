@@ -23,7 +23,7 @@ jobs:
          fetch-depth: "0"
       
       - name: Get Tag Name
-        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        run: echo "TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       
       # Set up Release Drafter
       - name: Release Drafter
@@ -34,9 +34,9 @@ jobs:
           config-name: release_drafter.yml
           publish: true
           commitish: main
-          name: ${{ env.TAG_NAME }}
-          tag: ${{ env.TAG_NAME }}
-          version: ${{ env.TAG_NAME }}
+          name: ${{ env.TAG }}
+          tag: ${{ env.TAG }}
+          version: ${{ env.TAG }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
