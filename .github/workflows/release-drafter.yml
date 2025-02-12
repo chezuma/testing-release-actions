@@ -30,6 +30,9 @@ jobs:
         with:
           disable-autolabeler: false
           config-name: release_drafter.yml
+          name: next
+          tag: next
+          version: next
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        
