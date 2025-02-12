@@ -30,7 +30,7 @@ jobs:
         with:
           disable-autolabeler: false
           config-name: release_drafter.yml
-          commitsh: main
+          commitish: main
           name: next
           tag: next
           version: next
