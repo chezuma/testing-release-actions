@@ -1,3 +1,5 @@
+name: Version and tag
+
 on:
     push:
       branches:
