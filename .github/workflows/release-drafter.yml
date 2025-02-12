@@ -35,6 +35,8 @@ jobs:
         with:
           disable-autolabeler: false
           config-name: release_drafter.yml
+          draft: false
+          publish: true
           commitish: main
           name: ${{ env.TAG_NAME }}
           tag: ${{ env.TAG_NAME }}
